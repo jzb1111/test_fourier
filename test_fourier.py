@@ -12,13 +12,13 @@ alis=[i for i in range(100)]
 
 im=np.zeros((200,200))
 
-'''for i in range(len(alis)):
+for i in range(len(alis)):
     q=alis[i]*np.exp(2*np.pi*(i/len(alis))*1j*1)
     chang=int(q.real-100)
     kuan=int(q.imag-100)
     im[chang][kuan]=1
 
-plt.imshow(im)'''
+plt.imshow(im)
 
 
 def fourier_fit(lis,f_n):
