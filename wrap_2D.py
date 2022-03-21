@@ -71,7 +71,10 @@ for i in range(len(vector_mat)):
             v=[1,0,0]
         
         #vk=np.tan((np.arctan(center_mat[i][j][0]/center_mat[i][j][1])/np.pi+0.5)*np.pi)
-        vk=[center_mat[i][j][0],center_mat[i][j][1]]/(center_mat[i][j][0]**2+center_mat[i][j][1]**2)**0.5
+        if center_mat[i][j][0]!=0 and center_mat[i][j][1]!=0:
+            vk=[center_mat[i][j][0],center_mat[i][j][1]]/(center_mat[i][j][0]**2+center_mat[i][j][1]**2)**0.5
+        else:
+            vk=[0,0]
         #print(vk,i,j)
         if center_mat[i][j][0]>0 and center_mat[i][j][1]>0:
             v=[abs(vk[1]),-abs(vk[0]),0]
@@ -97,7 +100,7 @@ for i in range(len(test_plane)):
         p_high=plane[i][j]
         #p=[center_mat[i][j][0],center_mat[i][j][1],0]
         #p=[0,0,-50]
-        p=np.quaternion(0,0,0,-50)
+        p=np.quaternion(0,0,0,-1)
         angle=angle_mat[i][j]*np.pi
         v=vector_mat[i][j]
         a=np.cos(angle/2)*np.quaternion(1,0,0,0)
@@ -111,9 +114,9 @@ for i in range(len(test_plane)):
         #print(p_new,r,i,j)
         p_new=p_new#*r
         #print(p_new)
-        x_=int(p_new.x*p_high)+50
-        y_=int(p_new.y*p_high)+50
-        z_=int(p_new.z*p_high)+50
+        x_=int(p_new.x*p_high*50)+50
+        y_=int(p_new.y*p_high*50)+50
+        z_=int(p_new.z*p_high*50)+50
         x_=split(x_)
         y_=split(y_)
         z_=split(z_)

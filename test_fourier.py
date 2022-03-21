@@ -17,7 +17,7 @@ for i in range(len(alis)):
     chang=int(q.real-100)
     kuan=int(q.imag-100)
     im[chang][kuan]=1
-
+plt.figure(0)
 plt.imshow(im)
 
 
@@ -30,9 +30,12 @@ def fourier_fit(lis,f_n):
     for i in range(len(f_num)):
         fnum=f_num[i]
         count=0+0j
+        countlis=[]
         for j in range(len(lis)):
             weight=np.exp(-2*np.pi*fnum*(j/len(lis))*1j)
             count+=weight*lis[j]
+            countlis.append(count)
+        #print(np.mean(countlis))    
         res.append(count/len(lis))
     return res
 
@@ -55,10 +58,10 @@ def Dfourier(flis,rough):
     return res
 
 blis=[np.sin(i/50)+np.sin(i/10) for i in range(100)]
-plt.figure(0)
+plt.figure(1)
 plt.plot(blis)
-f_lis=fourier_fit(blis,50)
+f_lis=fourier_fit(blis,20)
 
 dflis=Dfourier(f_lis,100)
-plt.figure(1)
+plt.figure(2)
 plt.plot(dflis)
